@@ -8,8 +8,8 @@ public class ApplePicker : MonoBehaviour
 {
     [Header ("Set in Inspector")]
     public GameObject basketPrefab;
-    public Text lives;
-    public int numBaskets = 3;
+    
+    public static int numBaskets = 3;
     public float basketBottomY = -10f;
     public float basketSpacingY = 2f;
     public float basketPosZ = -8f;
@@ -44,7 +44,18 @@ public class ApplePicker : MonoBehaviour
     void Update()
     {
         
+        
     }
+
+    // public void Lives()
+    // {
+    //     numBaskets -= 1;
+    //     if (numBaskets == 0)
+    //     {
+    //         SceneManager.LoadScene("_Scene_0");
+    //         return;
+    //     }
+    // }
     public void AppleDestroyed()
     {
         
@@ -53,22 +64,20 @@ public class ApplePicker : MonoBehaviour
         {
             Destroy(tGo);
         }
-        
-        numBaskets -= 1;
-        if (numBaskets == 0)
+        GameObject[] tWormArray = GameObject.FindGameObjectsWithTag("Worm");
+        foreach (GameObject  x in tWormArray)
         {
-            SceneManager.LoadScene("_Scene_0");
-            return;
+            Destroy(x);
         }
         
-        GameObject livesNow = GameObject.Find("Lives");
-        lives = livesNow.GetComponent<Text>();
-        if (numBaskets == 1)
-        {
-            lives.text = "Lives: LAST!!!be careful!";
-            return; 
-        }
-        lives.text = "Lives: "+ numBaskets.ToString();
+        // GameObject livesNow = GameObject.Find("Lives");
+        // lives = livesNow.GetComponent<Text>();
+        // if (numBaskets == 1)
+        // {
+        //     lives.text = "Lives: LAST!!!be careful!";
+        //     return; 
+        // }
+        // lives.text = "Lives: "+ numBaskets.ToString();
         
 
         // int basketIndex = basketList.Count-1;
