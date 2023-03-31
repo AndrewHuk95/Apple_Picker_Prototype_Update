@@ -20,7 +20,7 @@ public class Lives : MonoBehaviour
         lives.text = "Lives: "+ ApplePicker.numBaskets.ToString();
         if (ApplePicker.numBaskets == 0)
         {
-            SceneManager.LoadScene("_Scene_0");
+            SceneManager.LoadScene("GameOverScene");
             ApplePicker.numBaskets = 3;
         }
     }
